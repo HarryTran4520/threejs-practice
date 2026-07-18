@@ -3,7 +3,9 @@ import { Text3D, Center, useTexture, OrbitControls } from "@react-three/drei";
 import { SRGBColorSpace } from "three";
 
 function Donut() {
-  const matcap = useTexture("/textures/matcaps/7.png");
+  const matcap = useTexture(
+    `${import.meta.env.BASE_URL}/textures/matcaps/7.png`,
+  );
   matcap.colorSpace = SRGBColorSpace;
 
   return (
@@ -22,13 +24,15 @@ function Donut() {
 }
 
 function MyText() {
-  const matcap = useTexture("/textures/matcaps/7.png");
+  const matcap = useTexture(
+    `${import.meta.env.BASE_URL}/textures/matcaps/7.png`,
+  );
   matcap.colorSpace = SRGBColorSpace;
 
   return (
     <Center>
       <Text3D
-        font="/fonts/helvetiker_regular.typeface.json"
+        font={`${import.meta.env.BASE_URL}/fonts/helvetiker_regular.typeface.json`}
         size={0.5}
         height={0.2}
         curveSegments={12}
@@ -52,8 +56,8 @@ function App() {
         <color attach="background" args={["#000000"]} />
         <OrbitControls enableDamping />
         <MyText />
-        {new Array(100).fill(0).map(() => (
-          <Donut />
+        {new Array(100).fill(0).map((_, index) => (
+          <Donut key={index} />
         ))}
       </Canvas>
     </div>
