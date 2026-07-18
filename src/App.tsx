@@ -1,6 +1,6 @@
 import { Canvas } from "@react-three/fiber";
 import { Text3D, Center, useTexture, OrbitControls } from "@react-three/drei";
-import { SRGBColorSpace } from "three";
+import { NoToneMapping, SRGBColorSpace } from "three";
 
 function Donut() {
   const matcap = useTexture(
@@ -52,7 +52,7 @@ function MyText() {
 function App() {
   return (
     <div className="h-screen w-screen">
-      <Canvas>
+      <Canvas gl={{ toneMapping: NoToneMapping }}>
         <color attach="background" args={["#000000"]} />
         <OrbitControls enableDamping />
         <MyText />
